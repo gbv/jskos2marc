@@ -1,14 +1,14 @@
 <?php
 
+namespace JSKOS;
+
 // 1. JSKOS too MARC JSON :
 
 // http://format.gbv.de/marc/json
 // https://github.com/scriptotek/mc2skos#mapping-schema-for-marc21-authority
 // https://www.loc.gov/marc/authority/
 
-function jskosToMarc21($jskos) {
-  $jskoses = json_decode($jskos, TRUE);
-  
+function jskos2marcxml($jskoses) {
   $marc21Records = [];
   
   foreach($jskoses as $jskos) {
@@ -221,7 +221,7 @@ function jskosToMarc21($jskos) {
   else {
     $marc21Records = implode(PHP_EOL, $marc21Records);
   }
-  $dom = new DOMDocument;
+  $dom = new \DOMDocument;
   $dom->preserveWhiteSpace = FALSE;
   $dom->loadXML($marc21Records);
   $dom->formatOutput = TRUE;

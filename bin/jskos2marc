@@ -1,0 +1,16 @@
+#!/usr/bin/env php
+<?php
+
+require __DIR__ . '/../src/jskos2marc.php';
+
+array_shift($argv);
+if (!count($argv)) $argv = ['php://stdin'];
+
+foreach ($argv as $file) {
+    $handle = fopen($file, 'r');
+    $json = stream_get_contents($handle);
+    fclose($handle);
+
+    $jskos = json_decode($json, TRUE);
+    echo JSKOS\jskos2marcxml($jskos);
+}
