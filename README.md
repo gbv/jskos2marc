@@ -9,7 +9,7 @@ In PHP source code:
 ~~~php
 require_once 'src/jskos2marc.php';
 
-$jskos = [ 'prefLabel' => [ 'de' => 'Test' ] ];
+$jskos = [ [ 'prefLabel' => [ 'de' => 'Test' ] ] ];
 $xml = JSKOS\jskos2marcxml($jskos);
 ~~~
 
