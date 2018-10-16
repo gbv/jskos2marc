@@ -1,0 +1,151 @@
+[
+    {
+        "uri": "http:\/\/uri.gbv.de\/terminology\/kuniweb_test\/8c7ee3b1-66f9-4a79-a70b-a786e2bf4366",
+        "type": [
+            "http:\/\/www.w3.org\/2004\/02\/skos\/core#Concept"
+        ],
+        "@context": "http:\/\/gbv.github.io\/jskos\/context.json",
+        "inScheme": [
+            {
+                "uri": "http:\/\/uri.gbv.de\/terminology\/kuniweb_test\/",
+                "prefLabel": {
+                    "de": "kuniweb-Test (TEST-Vokabular f\u00fcr kuniweb)"
+                }
+            }
+        ],
+        "modified": "2018-10-15",
+        "publisher": [
+            {
+                "prefLabel": {
+                    "de": "Verbundzentrale des GBV (VZG)"
+                }
+            }
+        ],
+        "license": [
+            {
+                "uri": "http:\/\/creativecommons.org\/publicdomain\/zero\/1.0\/",
+                "notation": [
+                    "CC0 1.0",
+                    "CC0"
+                ],
+                "prefLabel": {
+                    "de": "Creative Commons Public Domain Dedication",
+                    "en": "Creative Commons Public Domain Dedication"
+                }
+            }
+        ],
+        "identifier": [
+            "http:\/\/dante.gbv.de\/detail\/2381850"
+        ],
+        "mapping": [
+            {
+                "type": "http:\/\/www.w3.org\/2004\/02\/skos\/core#exactMatch",
+                "from": "http:\/\/uri.gbv.de\/terminology\/kuniweb_test\/8c7ee3b1-66f9-4a79-a70b-a786e2bf4366",
+                "to": "http:\/\/dante.gbv.de\/detail\/2381850"
+            },
+            {
+                "type": "http:\/\/www.w3.org\/2004\/02\/skos\/core#closeMatch",
+                "from": "http:\/\/uri.gbv.de\/terminology\/kuniweb_test\/8c7ee3b1-66f9-4a79-a70b-a786e2bf4366",
+                "to": "http:\/\/dante.gbv.de\/detail\/2381850aaaa"
+            },
+            {
+                "type": "http:\/\/www.w3.org\/2004\/02\/skos\/core#broadMatch",
+                "from": "http:\/\/uri.gbv.de\/terminology\/kuniweb_test\/8c7ee3b1-66f9-4a79-a70b-a786e2bf4366",
+                "to": "http:\/\/dante.gbv.de\/detail\/2381850123123"
+            },
+            {
+                "type": "http:\/\/www.w3.org\/2004\/02\/skos\/core#relatedMatch",
+                "from": "http:\/\/uri.gbv.de\/terminology\/kuniweb_test\/8c7ee3b1-66f9-4a79-a70b-a786e2bf4366",
+                "to": "http:\/\/dante.gbv.de\/detail\/2381850998989898"
+            }
+        ],
+        "related": [
+            {
+                "uri": "http:\/\/dante.gbv.de\/detail\/2381850998989898"
+            }
+        ],
+        "notation": [
+            "asdfasdfas",
+            "asdfsadfasdfas13123123"
+        ],
+        "prefLabel": {
+            "de": "Bevorzugte Bezeichnung (de)"
+        },
+        "altLabel": {
+            "nl": [
+                "Alternative Bezeichnung (nl)"
+            ]
+        },
+        "hiddenLabel": {
+            "de": [
+                "Versteckte Bezeichnung (de)",
+                "Versteckte Bezeichnung 2 (de)"
+            ],
+            "en": [
+                "Versteckte Bezeichnung 3 (en)"
+            ]
+        },
+        "scopeNote": {
+            "de": [
+                "scopeNote scopeNote scopeNote scopeNote scopeNote"
+            ]
+        },
+        "definition": {
+            "de": [
+                "Definition  Definition  Definition  Definition  Definition",
+                "Definition 2 Definition 2 Definition 2 Definition 2 Definition 2"
+            ]
+        },
+        "example": {
+            "de": [
+                "Example Example Example"
+            ]
+        },
+        "changeNote": {
+            "de": [
+                "changeNote changeNote changeNote"
+            ]
+        },
+        "editorialNote": {
+            "de": [
+                "editorialNote editorialNote editorialNote editorialNote editorialNote"
+            ]
+        },
+        "historyNote": {
+            "de": [
+                "historicalNote historicalNote historicalNote historicalNote"
+            ]
+        },
+        "note": {
+            "de": [
+                "Note Note Note Note Note"
+            ]
+        },
+        "broader": [
+            null
+        ],
+        "ancestors": [
+            {
+                "prefLabel": {
+                    "de": "B\u00e4ume"
+                },
+                "uri": "http:\/\/uri.gbv.de\/terminology\/dante\/4b077f7f-819e-412f-a16f-3b22312f87e1",
+                "type": [
+                    "http:\/\/www.w3.org\/2004\/02\/skos\/core#Concept"
+                ]
+            }
+        ],
+        "narrower": [],
+        "location": [
+            {
+                "type": "Point",
+                "coordinates": [
+                    13.244857446727,
+                    54.521756606044
+                ]
+            }
+        ],
+        "startDate": "1611",
+        "endDate": "1676"
+    }
+]

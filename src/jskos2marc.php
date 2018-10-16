@@ -258,4 +258,10 @@ function marcjson2marcxml($marc) {
   $xml .= "</record>\n";
   return $xml;
 }
+
+function jskos_decode($json) {
+    $jskos = json_decode($json, TRUE);
+    return preg_match('/^\s*{/', $json) ? [ $jskos ] : $jskos;
+}
+
 ?>

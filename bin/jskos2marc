@@ -11,8 +11,6 @@ foreach ($argv as $file) {
     $json = stream_get_contents($handle);
     fclose($handle);
 
-    $jskos = json_decode($json, TRUE);
-    if (preg_match('/^\s*{/', $json)) $jskos = [ $jskos ];
-
+    $jskos = JSKOS\jskos_decode($json);
     echo JSKOS\jskos2marcxml($jskos);
 }
