@@ -8,7 +8,10 @@ namespace JSKOS;
 // https://github.com/scriptotek/mc2skos#mapping-schema-for-marc21-authority
 // https://www.loc.gov/marc/authority/
 
-function jskos2marc(array $jskosRecords) {
+function jskos2marc(array $jskosRecords, array $options=[]) {
+  // TODO: take default language from http://www.loc.gov/marc/authority/ad040.html
+  $primaryLanguage = $options['language'] ?? 'en';
+
   $marcRecords = [];
   
   foreach($jskosRecords as $jskos) {
@@ -60,9 +63,15 @@ function jskos2marc(array $jskosRecords) {
       // prefLabel
       if (isset($jskos['prefLabel'])) {
           $prefLabels = $jskos['prefLabel'];
-          $marc[] = [
-              '100', '1', ' ', 'a', $prefLabels['de']
-          ];
+          $primary = !isset($prefLabels[$primaryLanguage]);
+          foreach ($prefLabels as $code => $label) {
+            if ($primary || $code === $primaryLanguage) {
+              $marc[] = [ '100', '1', ' ', 'a', $label ];
+              $primary = false;
+            } else {
+              $marc[] = [ '400', '1', ' ', 'a', $label ];
+            }
+          }
       }
       // altLabel
       if (isset($jskos['altLabel'])) {
@@ -218,17 +227,17 @@ function jskos2marc(array $jskosRecords) {
   return $marcRecords;
 }
 
-function jskos2marcjson(array $jskosRecords) {
-  $marcRecords = jskos2marc($jskosRecords);
+function jskos2marcjson(array $jskosRecords, array $options=[]) {
+  $marcRecords = jskos2marc($jskosRecords, $options);
   return json_encode($marcRecords, JSON_UNESCAPED_SLASHES | JSON_PRETTY_PRINT);
 }
 
-function jskos2marcxml(array $jskosRecords) {
-  $marcRecords = jskos2marc($jskosRecords);
+function jskos2marcxml(array $jskosRecords, array $options=[]) {
+  $marcRecords = jskos2marc($jskosRecords, $options);
 
   $marcXML = ["<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n"];
 
-  $namespace = "http://www.loc.gov/MARC21/slim";
+  $namespace = $options['namespace'] ?? "http://www.loc.gov/MARC21/slim";
   if ( count($marcRecords) > 1 ) {
     $marcXML[] = "<collection xmlns=\"$namespace\">\n";
     $namespace = "";

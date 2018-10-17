@@ -69,7 +69,8 @@
             "asdfsadfasdfas13123123"
         ],
         "prefLabel": {
-            "de": "Bevorzugte Bezeichnung (de)"
+            "de": "Bevorzugte Bezeichnung (de)",
+            "xx": "Non-German prefLabel"
         },
         "altLabel": {
             "nl": [

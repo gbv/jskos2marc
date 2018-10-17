@@ -19,6 +19,9 @@
     <subfield code="a">Bevorzugte Bezeichnung (de)</subfield>
   </datafield>
   <datafield tag="400" ind1="1" ind2=" ">
+    <subfield code="a">Non-German prefLabel</subfield>
+  </datafield>
+  <datafield tag="400" ind1="1" ind2=" ">
     <subfield code="a">Alternative Bezeichnung (nl)</subfield>
   </datafield>
   <datafield tag="400" ind1="1" ind2=" ">
