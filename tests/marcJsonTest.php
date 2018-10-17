@@ -8,7 +8,7 @@ class MarcJsonTest extends \PHPUnit\Framework\TestCase
         $jskos = jskos_decode(file_get_contents('examples/minimal.json'));
         $marc = [
             [
-                ['LDR', '', '', '', "00000nz  a2200000nc 4500"],
+                ['LDR', null, null, '_', "00000nz  a2200000nc 4500"],
                 ['100', '1', ' ', 'a', 'example']
             ] 
         ];

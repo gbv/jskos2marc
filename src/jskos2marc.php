@@ -4,9 +4,7 @@ namespace JSKOS;
 
 // 1. JSKOS too MARC JSON :
 
-// http://format.gbv.de/marc/json
 // https://github.com/scriptotek/mc2skos#mapping-schema-for-marc21-authority
-// https://www.loc.gov/marc/authority/
 
 function jskos2marc(array $jskosRecords, array $options=[]) {
   // TODO: take default language from http://www.loc.gov/marc/authority/ad040.html
@@ -19,7 +17,7 @@ function jskos2marc(array $jskosRecords, array $options=[]) {
 
       // LEADER
       $marc[] = [
-          'LDR', '', '', '', '00000nz  a2200000nc 4500'
+          'LDR', null, null, '_', '00000nz  a2200000nc 4500'
       ];
 
       // modified  
@@ -28,7 +26,7 @@ function jskos2marc(array $jskosRecords, array $options=[]) {
           $modifiedDate = strtotime($modifiedDate);
           $modifiedDate = date('YmdHis.0', $modifiedDate);
           $marc[] = [
-              '005', '', '', '', $modifiedDate
+              '005', null, null, '_', $modifiedDate
           ];
       }
 

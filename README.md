@@ -26,6 +26,7 @@ See [mc2skos](https://github.com/scriptotek/mc2skos) for the reverse conversion.
 
 [JSKOS format]: https://gbv.github.io/jskos/
 [MARC 21 Authority format]: http://www.loc.gov/marc/authority/
+[MARC JSON]: http://format.gbv.de/marc/json
 
 ## Install
 
@@ -56,11 +57,11 @@ The following PHP functions are defined:
 
 ### jskos2marc
 
-Convert an array of JSKOS objects to an array of MARC objects (encoded like MARCJSON).
+Convert an array of JSKOS objects to an array of MARC objects (encoded like [MARC JSON]).
 
 ### jskos2marcjson
 
-Convert an array of JSKOS objects to a MARCJSON string.
+Convert an array of JSKOS objects to a [MARC JSON] string.
 
 ### jskos2marcxml
 
