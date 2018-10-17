@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
 <record xmlns="http://www.loc.gov/MARC21/slim" type="Authority">
-  <leader>00000nz a2200000nc 4500</leader>
+  <leader>00000nz  a2200000nc 4500</leader>
   <controlfield tag="005">20181015000000.0</controlfield>
   <datafield tag="024" ind1="7" ind2="">
     <subfield code="a">http://uri.gbv.de/terminology/kuniweb_test/8c7ee3b1-66f9-4a79-a70b-a786e2bf4366</subfield>

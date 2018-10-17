@@ -16,7 +16,7 @@ function jskos2marcxml($jskoses) {
 
       // LEADER
       $marc[] = [
-          'LDR', '', '', '', '00000nz a2200000nc 4500'
+          'LDR', '', '', '', '00000nz  a2200000nc 4500'
       ];
 
       // modified  
