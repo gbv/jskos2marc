@@ -2,3 +2,7 @@ language: php
 php:
   - 7.2
   - 7.1
+before_script:
+  - pip install --user mc2skos
+script:
+  - phpunit
