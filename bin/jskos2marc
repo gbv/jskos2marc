@@ -4,6 +4,11 @@
 require __DIR__ . '/../src/jskos2marc.php';
 
 array_shift($argv);
+$convert = 'JSKOS\jskos2marcxml';
+if ('-j' === $argv[0]) {
+    $convert = 'JSKOS\jskos2marcjson';
+    array_shift($argv);
+}
 if (!count($argv)) $argv = ['php://stdin'];
 
 foreach ($argv as $file) {
@@ -12,5 +17,5 @@ foreach ($argv as $file) {
     fclose($handle);
 
     $jskos = JSKOS\jskos_decode($json);
-    echo JSKOS\jskos2marcxml($jskos);
+    echo $convert($jskos);
 }

@@ -10,8 +10,10 @@
 - [Background](#background)
 - [Install](#install)
 - [API](#api)
+    - [jskos2marc](#jskos2marc)
+    - [jskos2marcjson](#jskos2marcjson)
     - [jskos2marcxml](#jskos2marcxml)
-    - [marcjson2marcxml](#marcjson2marcxml)
+    - [marcxml](#marcxml)
     - [jskos_decode](#jskos_decode)
 - [License](#license)
 
@@ -52,11 +54,19 @@ See script `bin/jskos2marc` to convert JSKOS to MARC from command line:
 
 The following PHP functions are defined:
 
+### jskos2marc
+
+Convert an array of JSKOS objects to an array of MARC objects (encoded like MARCJSON).
+
+### jskos2marcjson
+
+Convert an array of JSKOS objects to a MARCJSON string.
+
 ### jskos2marcxml
 
 Convert an array of JSKOS objects to a MARCXML string.
 
-### marcjson2marcxml
+### marcxml
 
 Convert an MARC JSON record to a MARCXML string.
 

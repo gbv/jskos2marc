@@ -8,10 +8,10 @@ namespace JSKOS;
 // https://github.com/scriptotek/mc2skos#mapping-schema-for-marc21-authority
 // https://www.loc.gov/marc/authority/
 
-function jskos2marcxml($jskoses) {
-  $marc21Records = [];
+function jskos2marc(array $jskosRecords) {
+  $marcRecords = [];
   
-  foreach($jskoses as $jskos) {
+  foreach($jskosRecords as $jskos) {
       $marc = [];
 
       // LEADER
@@ -212,47 +212,60 @@ function jskos2marcxml($jskoses) {
       // literature (GVK, free literaturetext...?) --> not in jskos yet
 
       
-      $marcXML = marcjson2marcxml($marc);
-      array_push($marc21Records, $marcXML);
+      $marcRecords[] = $marc;
   }
-  if(count($marc21Records) > 1) {
-    $marc21Records = '<records>' . implode(PHP_EOL, $marc21Records) . '</records>';
-  }
-  else {
-    $marc21Records = implode(PHP_EOL, $marc21Records);
-  }
-  $dom = new \DOMDocument;
-  $dom->preserveWhiteSpace = FALSE;
-  $dom->loadXML($marc21Records);
-  $dom->formatOutput = TRUE;
-  $marcXML = $dom->saveXML();
 
-  return $marcXML;
+  return $marcRecords;
 }
 
-// Zum testen des umgekehrten weges:
-//
-// $ wget -O gnd.xml https://d-nb.info/11572835X/about/marcxml
-// $ mc2skos -o jskos --scheme gnd marcxml
+function jskos2marcjson(array $jskosRecords) {
+  $marcRecords = jskos2marc($jskosRecords);
+  return json_encode($marcRecords, JSON_UNESCAPED_SLASHES | JSON_PRETTY_PRINT);
+}
 
-// 2. MARC-JSON too MARC-XML
-function marcjson2marcxml($marc) {
-  $xml = "<record xmlns=\"http://www.loc.gov/MARC21/slim\" type=\"Authority\">\n";
+function jskos2marcxml(array $jskosRecords) {
+  $marcRecords = jskos2marc($jskosRecords);
+
+  $marcXML = ["<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n"];
+
+  $namespace = "http://www.loc.gov/MARC21/slim";
+  if ( count($marcRecords) > 1 ) {
+    $marcXML[] = "<collection xmlns=\"$namespace\">\n";
+    $namespace = "";
+  }
+
+  foreach ($marcRecords as $marc) {
+    $marcXML[] = marcxml($marc, "Authority", $namespace);
+  }
+  
+  if (count($marcRecords) > 1) {
+    $marcXML[] = "<collection>\n";
+  }
+
+  return implode('', $marcXML);
+}
+
+function marcxml(array $marc, string $type, string $namespace="") {
+  if ($namespace) {
+    $xml = "<record xmlns=\"$namespace\" type=\"$type\">\n";
+  } else {
+    $xml = "<record type=\"$type\">\n";
+  }
   foreach ($marc as $field) {
     if ($field[0] == 'LDR') {
-      $xml .= "<leader>".$field[4]."</leader>\n";
+      $xml .= "  <leader>".$field[4]."</leader>\n";
     } 
     else if ($field[0] < 10) {
-      $xml .= "<controlfield tag=\"$field[0]\">$field[4]</controlfield>\n";
+      $xml .= "  <controlfield tag=\"$field[0]\">$field[4]</controlfield>\n";
     } 
     else {
-      $xml .= '<datafield tag="' . $field[0] . '" ind1="' . $field[1] . '" ind2="' . $field[2] . '">' . PHP_EOL;
+      $xml .= '  <datafield tag="' . $field[0] . '" ind1="' . $field[1] . '" ind2="' . $field[2] . "\">\n";
       for ($i=3; $i<count($field); $i+=2) {
-        $xml .= '<subfield code="' . $field[$i] . '">';
+        $xml .= '    <subfield code="' . $field[$i] . '">';
         $xml .= htmlspecialchars($field[$i+1]);
         $xml .= "</subfield>\n";
       }
-      $xml .= "</datafield>\n";
+      $xml .= "  </datafield>\n";
     }
   }
   $xml .= "</record>\n";
