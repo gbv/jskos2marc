@@ -2,56 +2,56 @@
 <record xmlns="http://www.loc.gov/MARC21/slim" type="Authority">
   <leader>00000nz  a2200000nc 4500</leader>
   <controlfield tag="005">20181015000000.0</controlfield>
-  <datafield tag="024" ind1="7" ind2="">
+  <datafield tag="024" ind1="7" ind2=" ">
     <subfield code="a">http://uri.gbv.de/terminology/kuniweb_test/8c7ee3b1-66f9-4a79-a70b-a786e2bf4366</subfield>
     <subfield code="2">uri</subfield>
   </datafield>
-  <datafield tag="035" ind1="" ind2="">
+  <datafield tag="035" ind1=" " ind2=" ">
     <subfield code="a">http://dante.gbv.de/detail/2381850</subfield>
   </datafield>
-  <datafield tag="035" ind1="" ind2="">
+  <datafield tag="035" ind1=" " ind2=" ">
     <subfield code="a">asdfasdfas</subfield>
   </datafield>
-  <datafield tag="035" ind1="" ind2="">
+  <datafield tag="035" ind1=" " ind2=" ">
     <subfield code="a">asdfsadfasdfas13123123</subfield>
   </datafield>
-  <datafield tag="100" ind1="1" ind2="">
+  <datafield tag="100" ind1="1" ind2=" ">
     <subfield code="a">Bevorzugte Bezeichnung (de)</subfield>
   </datafield>
-  <datafield tag="400" ind1="1" ind2="">
+  <datafield tag="400" ind1="1" ind2=" ">
     <subfield code="a">Alternative Bezeichnung (nl)</subfield>
   </datafield>
-  <datafield tag="400" ind1="1" ind2="">
+  <datafield tag="400" ind1="1" ind2=" ">
     <subfield code="a">Versteckte Bezeichnung (de)</subfield>
   </datafield>
-  <datafield tag="400" ind1="1" ind2="">
+  <datafield tag="400" ind1="1" ind2=" ">
     <subfield code="a">Versteckte Bezeichnung 2 (de)</subfield>
   </datafield>
-  <datafield tag="400" ind1="1" ind2="">
+  <datafield tag="400" ind1="1" ind2=" ">
     <subfield code="a">Versteckte Bezeichnung 3 (en)</subfield>
   </datafield>
-  <datafield tag="667" ind1="" ind2="">
+  <datafield tag="667" ind1=" " ind2=" ">
     <subfield code="a">editorialNote editorialNote editorialNote editorialNote editorialNote</subfield>
   </datafield>
-  <datafield tag="677" ind1="" ind2="">
+  <datafield tag="677" ind1=" " ind2=" ">
     <subfield code="a">Definition  Definition  Definition  Definition  Definition</subfield>
   </datafield>
-  <datafield tag="677" ind1="" ind2="">
+  <datafield tag="677" ind1=" " ind2=" ">
     <subfield code="a">Definition 2 Definition 2 Definition 2 Definition 2 Definition 2</subfield>
   </datafield>
-  <datafield tag="680" ind1="" ind2="">
+  <datafield tag="680" ind1=" " ind2=" ">
     <subfield code="a">Note Note Note Note Note</subfield>
   </datafield>
-  <datafield tag="681" ind1="" ind2="">
+  <datafield tag="681" ind1=" " ind2=" ">
     <subfield code="a">Example Example Example</subfield>
   </datafield>
-  <datafield tag="682" ind1="" ind2="">
+  <datafield tag="682" ind1=" " ind2=" ">
     <subfield code="a">changeNote changeNote changeNote</subfield>
   </datafield>
-  <datafield tag="688" ind1="" ind2="">
+  <datafield tag="688" ind1=" " ind2=" ">
     <subfield code="a">historicalNote historicalNote historicalNote historicalNote</subfield>
   </datafield>
-  <datafield tag="548" ind1="" ind2="">
+  <datafield tag="548" ind1=" " ind2=" ">
     <subfield code="a">1611-1676</subfield>
     <subfield code="4">datl</subfield>
     <subfield code="4">http://d-nb.info/standards/elementset/gnd#dateOfBirthAndDeath</subfield>

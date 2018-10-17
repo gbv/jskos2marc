@@ -32,7 +32,7 @@ function jskos2marcxml($jskoses) {
       // uri
       if (isset($jskos['uri'])) {
           $marc[] = [
-              '024', '7', '', 'a', $jskos['uri'],
+              '024', '7', ' ', 'a', $jskos['uri'],
               '2', 'uri'
           ];
       }  
@@ -42,7 +42,7 @@ function jskos2marcxml($jskoses) {
           $identifiers = $jskos['identifier'];
           foreach ($identifiers as $identifier) {
             $marc[] = [
-                '035', '', '', 'a', $identifier
+                '035', ' ', ' ', 'a', $identifier
             ];
           }
       }  
@@ -52,7 +52,7 @@ function jskos2marcxml($jskoses) {
           $notations = $jskos['notation'];
           foreach ($notations as $notation) {
             $marc[] = [
-                '035', '', '', 'a', $notation
+                '035', ' ', ' ', 'a', $notation
             ];
           }
       }  
@@ -61,7 +61,7 @@ function jskos2marcxml($jskoses) {
       if (isset($jskos['prefLabel'])) {
           $prefLabels = $jskos['prefLabel'];
           $marc[] = [
-              '100', '1', '', 'a', $prefLabels['de']
+              '100', '1', ' ', 'a', $prefLabels['de']
           ];
       }
       // altLabel
@@ -70,7 +70,7 @@ function jskos2marcxml($jskoses) {
           foreach ($altLabels as $altLabelLang) {
             foreach ($altLabelLang as $entry) {
               $marc[] = [
-                  '400', '1', '', 'a', $entry
+                  '400', '1', ' ', 'a', $entry
               ];
             }
           }
@@ -81,7 +81,7 @@ function jskos2marcxml($jskoses) {
           foreach ($hiddenLabels as $hiddenLabelLang) {
             foreach ($hiddenLabelLang as $entry) {
               $marc[] = [
-                  '400', '1', '', 'a', $entry
+                  '400', '1', ' ', 'a', $entry
               ];
             }
           }
@@ -92,7 +92,7 @@ function jskos2marcxml($jskoses) {
           foreach ($editorialNotes as $editorialNoteLang) {
             foreach ($editorialNoteLang as $entry) {
               $marc[] = [
-                  '667', '', '', 'a', $entry
+                  '667', ' ', ' ', 'a', $entry
               ];
             }
           }
@@ -103,7 +103,7 @@ function jskos2marcxml($jskoses) {
           foreach ($definitions as $definitionLang) {
             foreach ($definitionLang as $entry) {
               $marc[] = [
-                  '677', '', '', 'a', $entry
+                  '677', ' ', ' ', 'a', $entry
               ];
             }
           }
@@ -114,7 +114,7 @@ function jskos2marcxml($jskoses) {
           foreach ($notes as $noteLang) {
             foreach ($noteLang as $entry) {
               $marc[] = [
-                  '680', '', '', 'a', $entry
+                  '680', ' ', ' ', 'a', $entry
               ];
             }
           }
@@ -125,7 +125,7 @@ function jskos2marcxml($jskoses) {
           foreach ($examples as $exampleLang) {
             foreach ($exampleLang as $entry) {
               $marc[] = [
-                  '681', '', '', 'a', $entry
+                  '681', ' ', ' ', 'a', $entry
               ];
             }
           }
@@ -136,7 +136,7 @@ function jskos2marcxml($jskoses) {
           foreach ($changeNotes as $changeNoteLang) {
             foreach ($changeNoteLang as $entry) {
               $marc[] = [
-                  '682', '', '', 'a', $entry
+                  '682', ' ', ' ', 'a', $entry
               ];
             }
           }
@@ -147,7 +147,7 @@ function jskos2marcxml($jskoses) {
           foreach ($historyNotes as $historyNoteLang) {
             foreach ($historyNoteLang as $entry) {
               $marc[] = [
-                  '688', '', '', 'a', $entry
+                  '688', ' ', ' ', 'a', $entry
               ];
             }
           }
@@ -172,7 +172,7 @@ function jskos2marcxml($jskoses) {
           $type = 'http://d-nb.info/standards/elementset/gnd#dateOfDeath';
         }
         $marc[] = [
-            '548', '', '', 'a', $dateStr,
+            '548', ' ', ' ', 'a', $dateStr,
             '4', 'datl',
             '4', $type,
             'w', 'r',
