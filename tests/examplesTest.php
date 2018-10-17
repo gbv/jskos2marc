@@ -15,7 +15,7 @@ class ExamplesTest extends \PHPUnit\Framework\TestCase
 
     public function examplesProvider() {
         $examples = [];
-        $files = glob ('tests/examples/*.json');
+        $files = glob ('examples/*.json');
         foreach ($files as $jskosfile) {        
             $xmlfile = preg_replace('/\.json$/', '.xml', $jskosfile);
             if (file_exists($xmlfile)) {
