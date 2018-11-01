@@ -23,10 +23,12 @@ This library provides conversion from [JSKOS format] to [MARC 21 Authority forma
 
 See [mc2skos](https://github.com/scriptotek/mc2skos) for the reverse conversion.
 
+See also [jskos-tools](https://github.com/gbv/jskos-tools) for a similar library in JavaScript.
 
 [JSKOS format]: https://gbv.github.io/jskos/
 [MARC 21 Authority format]: http://www.loc.gov/marc/authority/
 [MARC JSON]: http://format.gbv.de/marc/json
+[MARC XML]: http://format.gbv.de/marc/xml
 
 ## Install
 
@@ -42,7 +44,14 @@ See [API section below](#api) for details to use in PHP source code:
 require_once 'src/jskos2marc.php';
 
 $jskos = [ [ 'prefLabel' => [ 'de' => 'Test' ] ] ];
-$xml = JSKOS\jskos2marcxml($jskos);
+
+if ($format === 'marcxml') {
+  header('Content-Type: application/xml; charset=utf-8');
+  echo JSKOS\jskos2marcxml($jskos);
+} else if ($format === 'marcjson') {
+  header("Content-type: application/json; charset=utf-8");
+  echo JSKOS\jskos2marcjson($jskos);
+}
 ~~~
 
 See script `bin/jskos2marc` to convert JSKOS to MARC from command line:
@@ -53,7 +62,7 @@ See script `bin/jskos2marc` to convert JSKOS to MARC from command line:
 
 ## API
 
-The following PHP functions are defined:
+The following PHP functions are defined in the `JSKOS` namespace:
 
 ### jskos2marc
 
@@ -65,11 +74,11 @@ Convert an array of JSKOS objects to a [MARC JSON] string.
 
 ### jskos2marcxml
 
-Convert an array of JSKOS objects to a MARCXML string.
+Convert an array of JSKOS objects to a [MARC XML] string.
 
 ### marcxml
 
-Convert an MARC JSON record to a MARCXML string.
+Convert an MARC JSON record to a [MARC XML] string.
 
 ### jskos_decode
 
