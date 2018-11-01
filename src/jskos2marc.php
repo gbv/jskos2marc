@@ -39,24 +39,18 @@ function jskos2marc(array $jskosRecords, array $options=[]) {
       }  
       
       // identifier
-      if (isset($jskos['identifier'])) {
-          $identifiers = $jskos['identifier'];
-          foreach ($identifiers as $identifier) {
-            $marc[] = [
-                '035', ' ', ' ', 'a', $identifier
-            ];
-          }
-      }  
+      foreach ( $jskos['identifier'] ?? [] as $identifier) {
+          $marc[] = [
+            '035', ' ', ' ', 'a', $identifier
+          ];
+      }
       
       // notation
-      if (isset($jskos['notation'])) {
-          $notations = $jskos['notation'];
-          foreach ($notations as $notation) {
-            $marc[] = [
-                '035', ' ', ' ', 'a', $notation
-            ];
-          }
-      }  
+      foreach ($jskos['notation'] ?? [] as $notation) {
+          $marc[] = [
+            '035', ' ', ' ', 'a', $notation
+          ];
+      }
 
       // prefLabel
       if (isset($jskos['prefLabel'])) {
@@ -71,111 +65,40 @@ function jskos2marc(array $jskosRecords, array $options=[]) {
             }
           }
       }
-      // altLabel
-      if (isset($jskos['altLabel'])) {
-          $altLabels = $jskos['altLabel'];
-          foreach ($altLabels as $altLabelLang) {
-            foreach ($altLabelLang as $entry) {
-              $marc[] = [
-                  '400', '1', ' ', 'a', $entry
-              ];
+
+      // altLabel, hiddenlabel, editorialNote, definition, note...
+
+      $mapLabels = function($jskosField, $marcField) use ($jskos, &$marc) {
+          foreach ($jskos[$jskosField] ?? [] as $list) {
+              foreach ($list as $entry) {
+                  $field = $marcField;
+                  $field[] = $entry;
+                  $marc[] = $field;
             }
           }
-      }
-      // hiddenLabel
-      if (isset($jskos['hiddenLabel'])) {
-          $hiddenLabels = $jskos['hiddenLabel'];
-          foreach ($hiddenLabels as $hiddenLabelLang) {
-            foreach ($hiddenLabelLang as $entry) {
-              $marc[] = [
-                  '400', '1', ' ', 'a', $entry
-              ];
-            }
-          }
-      }
-      // editorialNote
-      if (isset($jskos['editorialNote'])) {
-          $editorialNotes = $jskos['editorialNote'];
-          foreach ($editorialNotes as $editorialNoteLang) {
-            foreach ($editorialNoteLang as $entry) {
-              $marc[] = [
-                  '667', ' ', ' ', 'a', $entry
-              ];
-            }
-          }
-      }
-      // definition
-      if (isset($jskos['definition'])) {
-          $definitions = $jskos['definition'];
-          foreach ($definitions as $definitionLang) {
-            foreach ($definitionLang as $entry) {
-              $marc[] = [
-                  '677', ' ', ' ', 'a', $entry
-              ];
-            }
-          }
-      }
-      // note
-      if (isset($jskos['note'])) {
-          $notes = $jskos['note'];
-          foreach ($notes as $noteLang) {
-            foreach ($noteLang as $entry) {
-              $marc[] = [
-                  '680', ' ', ' ', 'a', $entry
-              ];
-            }
-          }
-      }
-      // example
-      if (isset($jskos['example'])) {
-          $examples = $jskos['example'];
-          foreach ($examples as $exampleLang) {
-            foreach ($exampleLang as $entry) {
-              $marc[] = [
-                  '681', ' ', ' ', 'a', $entry
-              ];
-            }
-          }
-      }
-      // changeNote
-      if (isset($jskos['changeNote'])) {
-          $changeNotes = $jskos['changeNote'];
-          foreach ($changeNotes as $changeNoteLang) {
-            foreach ($changeNoteLang as $entry) {
-              $marc[] = [
-                  '682', ' ', ' ', 'a', $entry
-              ];
-            }
-          }
-      }
-      // changeNote
-      if (isset($jskos['historyNote'])) {
-          $historyNotes = $jskos['historyNote'];
-          foreach ($historyNotes as $historyNoteLang) {
-            foreach ($historyNoteLang as $entry) {
-              $marc[] = [
-                  '688', ' ', ' ', 'a', $entry
-              ];
-            }
-          }
-      }
-      
+      };
+
+      $mapLabels('altLabel',        [ '400', '1', ' ', 'a' ]);
+      $mapLabels('hiddenLabel',     [ '400', '1', ' ', 'a' ]);
+      $mapLabels('editorialNote',   [ '667', ' ', ' ', 'a' ]);
+      $mapLabels('definition',      [ '677', ' ', ' ', 'a' ]);
+      $mapLabels('note',            [ '680', ' ', ' ', 'a' ]);
+      $mapLabels('example',         [ '681', ' ', ' ', 'a' ]);
+      $mapLabels('changeNote',      [ '682', ' ', ' ', 'a' ]);
+      $mapLabels('historyNote',     [ '688', ' ', ' ', 'a' ]);
+
+
       // startDate + endDate
-      $startDate = '';
-      if(isset($jskos['startDate'])) {
-        $startDate = $jskos['startDate'];
-      }
-      $endDate = '';
-      if(isset($jskos['endDate'])) {
-        $endDate = $jskos['endDate'];
-      }
-      if ($startDate != '' || $endDate != '') {
+      $startDate = $jskos['startDate'] ?? '';
+      $endDate = $jskos['endDate'] ?? '';
+
+      if ($startDate !== '' || $endDate !== '') {
         $dateStr = $startDate . '-' . $endDate;
         $type = 'http://d-nb.info/standards/elementset/gnd#dateOfBirthAndDeath';
         if($endDate == '') {
           $type = 'http://d-nb.info/standards/elementset/gnd#dateOfBirth';
         }
-        if($startDate == '') {
+        if($startDate === '') {
           $type = 'http://d-nb.info/standards/elementset/gnd#dateOfDeath';
         }
         $marc[] = [
