@@ -5,7 +5,7 @@ require __DIR__ . '/../src/jskos2marc.php';
 
 array_shift($argv);
 $convert = 'JSKOS\jskos2marcxml';
-if ('-j' === $argv[0]) {
+if ('-j' === @$argv[0]) {
     $convert = 'JSKOS\jskos2marcjson';
     array_shift($argv);
 }
